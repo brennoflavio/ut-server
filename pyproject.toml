@@ -1,0 +1,28 @@
+[project]
+name = "ut-server"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "aiosmtplib>=4.0.1",
+    "fastapi[standard]>=0.116.1",
+    "sqlmodel>=0.0.24",
+]
+
+[project.scripts]
+dev = "fastapi dev src/api.py"
+
+[tool.deptry.per_rule_ignores]
+DEP001 = []
+DEP002 = []
+DEP003 = []
+DEP004 = []
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.3.0",
+]
+
+[tool.isort]
+profile = "black"
