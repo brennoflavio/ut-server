@@ -2,9 +2,9 @@ import os
 from typing import Any, Callable, Optional
 
 
-def get_env(env: str, convert_function: Optional[Callable[[str], Any]] = None, required: bool = False) -> Optional[Any]:
+def get_env(env: str, convert_function: Optional[Callable[[str], Any]] = None) -> Any:
     value = os.getenv(env)
-    if required and value is None:
+    if value is None:
         raise ValueError(f"Environment variable '{env}' is required")
 
     if not value:
@@ -16,10 +16,12 @@ def get_env(env: str, convert_function: Optional[Callable[[str], Any]] = None, r
     return value
 
 
-EMAIL_HOST = get_env("EMAIL_HOST", required=True)
-EMAIL_PORT = get_env("EMAIL_PORT", convert_function=int, required=True)
-EMAIL_START_TLS = get_env("EMAIL_START_TLS", convert_function=bool, required=True)
-EMAIL_USERNAME = get_env("EMAIL_USERNAME", required=True)
-EMAIL_PASSWORD = get_env("EMAIL_PASSWORD", required=True)
-EMAIL_FROM = get_env("EMAIL_FROM", required=True)
-EMAIL_TO = get_env("EMAIL_TO", required=True)
+EMAIL_HOST = get_env("EMAIL_HOST")
+EMAIL_PORT = get_env("EMAIL_PORT", convert_function=int)
+EMAIL_START_TLS = get_env("EMAIL_START_TLS", convert_function=bool)
+EMAIL_USERNAME = get_env("EMAIL_USERNAME")
+EMAIL_PASSWORD = get_env("EMAIL_PASSWORD")
+EMAIL_FROM = get_env("EMAIL_FROM")
+EMAIL_TO = get_env("EMAIL_TO")
+
+DATABASE_URL = get_env("DATABASE_URL")

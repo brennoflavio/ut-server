@@ -177,3 +177,4 @@ pyrightconfig.json
 
 CLAUDE.md
 .envrc
+*.db
